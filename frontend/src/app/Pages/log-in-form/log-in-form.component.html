@@ -1,0 +1,32 @@
+<!-- login.component.html -->
+<div class="overlay" *ngIf="showLogin"></div>
+<div class="login-container" *ngIf="showLogin">
+<!-- <div class="login-container"> -->
+    <span class="close-button float-right" (click)="closeLogin()">X</span>
+    <h2>{{"Login Form" | translate}}</h2>
+    <form #loginForm=ngForm (ngSubmit)="onSubmit()" >
+
+        <div class="alert alert-danger" [hidden]="!error">
+        {{ error | translate}}
+        </div>
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+            <input type="email" id="form2Example1" class="form-control" [(ngModel)]="form.email" name="email" required/>
+            <label class="form-label" for="form2Example1">{{"Email address" | translate}}</label>
+        </div>
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+            <input type="password" id="form2Example2" class="form-control" [(ngModel)]="form.password" name="password" required />
+            <label class="form-label" for="form2Example2">{{"Password" | translate}}</label>
+        </div>
+        <!-- Submit button -->
+        <div class="login-signin-btn">
+        <button type="submit" class="btn btn-primary btn-block mb-4" [disabled]="!loginForm.valid">{{"Log In" | translate}}</button>
+        <!-- <button type="button" class="btn btn-info btn-block mb-4" >
+            <a href="sign-up">
+            Sign up
+        </a>
+        </button> -->
+    </div>
+    </form>
+</div>

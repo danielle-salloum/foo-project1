@@ -1,0 +1,63 @@
+.topper-main-container{
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.topper-logo{
+    width:50px;
+    padding: 5px;
+    border-radius: 5px;
+    border: black solid 2px;
+}
+.topper-section-one{
+    display: flex;
+    align-items: center;
+}
+.lang-btn{
+    border: none;
+    background-color: transparent;
+}
+.size-btn{
+    border: none;
+    background-color: transparent;
+}
+.log-in-btn{
+    padding:3px;
+    color: black;
+    text-decoration: none;
+    border-radius: 5px !important;
+    border: black solid 2px !important;
+    background-color: transparent !important;
+}
+.log-out-btn{
+    border-radius: 5px !important;
+    border: black solid 2px !important;
+    background-color: transparent !important;
+}
+.topper-section-two{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* Media Query */
+@media only screen and (max-width: 279px) {
+    .topper-logo {
+        width: 30px;
+        padding: 0px;
+    }
+    .log-in-btn {
+        padding: 0px;
+    }
+    .size{
+        display: flex;
+        flex-direction: column;
+    }
+    .lang{
+        display: flex;
+        flex-direction: column;
+    }
+   
+}

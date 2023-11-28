@@ -1,0 +1,90 @@
+<div class="cart-main-container">
+<div class="cart-header">
+    <a href="/" class="menu-links">
+        <img src="../../../assets/BooksLogo.png" alt="logo" class="e-commerce-logo"/>
+    </a>
+    <h1>{{"E-Commerce" | translate}}</h1>
+</div>
+<!-- <app-topper-bar/> -->
+<section class="h-100 h-custom" *ngIf="products && products.length>0">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12">
+                <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+                    <div class="card-body p-0">
+                        <div class="row g-0">
+                            <div class="col-lg-8">
+                                <div class="p-5">
+                                    <div class="d-flex justify-content-between align-items-center mb-5">
+                                        <h1 class="fw-bold mb-0 text-black">{{"Shopping Cart" | translate}}</h1>
+                                        <h6 class="mb-0 text-muted" *ngIf="products.length===1">{{ products.length }} {{ "item" | translate }}</h6>
+                                        <h6 class="mb-0 text-muted" *ngIf="products.length!=1">{{ products.length }} {{"items" | translate }}</h6>
+                                    </div>
+                                    <hr class="my-4">
+                                    <div class="products-list">
+                                        <div *ngFor="let product of products">
+                                            <div class="card mb-3" [ngStyle]="{'border-color': product.quantityPurchased > 0 ? 'green' : '#d2d2d2'}"
+                                                style="max-width: 540px;" id="productCard{{ product.id }}">
+                                                <div class="row g-0">
+                                                    <div class="col-md-4">
+                                                        <img [src]="product.image" class="img-fluid rounded-start" alt="{{ product.title }}" />
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="card-body">
+                                                            <h6 class="text-muted">{{ product.title | translate}}</h6>
+                                                            <h6 class="text-black mb-0">{{ "Price Per Unit" | translate }}: {{ product.price }}$</h6>
+                                                            <h6 class="text-black mb-0">{{ "Available Books" | translate }}: {{product.quantity}} {{"Books" | translate}}</h6>
+                                                            <div class="pt-3">
+                                                                <input id="quantityInput{{ product.id }}" min="0" name="quantity" value="0" type="number" [max]="product.quantity"
+                                                                    class="form-control form-control-sm" [(ngModel)]="product.quantityPurchased" (change)="addToCart(product, product.quantityPurchased)" />
+                                                                <button class="btn btn-sm" type="button" (click)="removeFromCart(product)">
+                                                                    <i class="fas fa-trash"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr class="my-4">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 bg-grey">
+                                <div class="p-5">
+                                    <h3 class="fw-bold mb-5 mt-2 pt-1">{{ "Cart" | translate }}</h3>
+                                    <hr class="my-4">
+                                    <h5 class="text-uppercase" *ngIf="chosenProducts.length===0">{{ "No Items Chosen" | translate }}</h5>
+                                    <h5 class="text-uppercase" *ngIf="chosenProducts.length===1">{{chosenProducts.length}}{{ "item" | translate }}</h5>
+                                    <h5 class="text-uppercase" *ngIf="chosenProducts.length>=2">{{chosenProducts.length}} {{ "items" | translate }}</h5>
+                            <div *ngFor="let chosenProduct of chosenProducts; let i = index" class="cart-item"
+                                [ngStyle]="{'border-color': chosenProduct.quantityPurchased > 0 ? 'green' : '#d2d2d2'}">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>{{ i + 1 }}. {{ chosenProduct.title | translate}} ({{ chosenProduct.quantityPurchased }}): ${{
+                                        chosenProduct.totalPrice }}</div>
+                                    <div>
+                                        <button class="btn btn-danger btn-sm" type="button" (click)="removeFromCart(chosenProduct)">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <hr class="my-2">
+                            </div>
+                            <div class="total">
+                                <p>{{ "Total" | translate }}: ${{ calculateTotal() }}</p>
+                            </div>
+                            <button type="button" class="btn btn-dark btn-block btn-lg" data-mdb-ripple-color="dark">{{ "Check Out" | translate }}</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div *ngIf="!products || products.length === 0">
+    <p>{{"No Products Found" | translate}}!</p>
+</div>
+</div>

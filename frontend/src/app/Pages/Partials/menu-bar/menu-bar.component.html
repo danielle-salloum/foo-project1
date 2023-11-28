@@ -1,0 +1,25 @@
+<div class="menu-bar-main-contianer">
+    <ul class="menu-list">
+        <li class="menu-list-item">
+            <a href="/">
+            {{ 'Home' | translate }}
+            </a>
+        </li>
+        <li class="menu-list-item">
+            <a href="#find-us">
+            {{ 'Find Us' | translate }}
+            </a>
+        </li>
+        <li class="menu-list-item">
+            <a href="#footer">
+            {{ 'Follow Us' | translate }}
+            </a>
+        </li>
+        <li class="menu-list-item">
+            <app-log-in-form *ngIf="loginService.showLogin$ | async"></app-log-in-form>
+            <a (click)="navigateToCart()">
+            {{ 'E-Commerce' | translate }}
+            </a>
+        </li>
+    </ul>
+</div>

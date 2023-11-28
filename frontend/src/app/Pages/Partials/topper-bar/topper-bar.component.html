@@ -1,0 +1,22 @@
+<!-- topper.html -->
+<div class="topper-main-container">
+    <div class="topper-section-one">
+    <img src="../../../../assets/BooksLogo.png" alt="logo" class="topper-logo" />
+    <div class="lang">
+        <button class="lang-btn" (click)="switchLanguage('en')">{{ 'En' | translate }}</button>
+        <button class="lang-btn" (click)="switchLanguage('ar')">{{ 'Ar' | translate }}</button>
+    </div>
+   </div>
+   <app-log-in-form *ngIf="loginService.showLogin$ | async"></app-log-in-form>
+    <div class="topper-section-two">
+        <div class="size" >
+            <button class="size-btn"  (click)="increaseFontSize()">{{ 'A+' | translate }}</button>
+            <button class="size-btn" (click)="decreaseFontSize()">{{ 'A-' | translate }}</button>
+        </div >
+        <button class="log-in-btn" (click)="openLogin()" *ngIf="!loggedIn">{{ 'Log In' | translate }}</button>
+        <!-- <a class="log-in-btn" routerLink="/login" *ngIf="!loggedIn">Log In</a> -->
+        <!-- <a class="log-in-btn" routerLink="/login" [queryParams]="{ redirect: '/cart' }" *ngIf="!loggedIn">Log In</a> -->
+        <button class="log-out-btn"  href='/' (click)="logout($event)" *ngIf="loggedIn">{{ 'Log Out' | translate }}</button>
+    </div>
+    <!-- Add the login form component here -->
+</div>

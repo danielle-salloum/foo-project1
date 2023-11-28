@@ -1,0 +1,25 @@
+<div class="product-list-container" *ngIf="products && products.length>0" >
+    <div class="add-part" *ngIf="loggedIn">
+    <a (click)="openPopup()" class="add-product-section" >
+        <i class="fas fa-plus"></i>
+    </a>
+</div>
+<div class="product-list">
+    <div class="product-item" *ngFor="let product of products">
+        <img [src]="product.image" alt="{{ product.title }}" />
+        <div class="product-info">
+            <h2>{{ product.title | translate}}</h2>
+            <p>{{"Quantity" | translate}}: {{ product.quantity }}</p>
+            <span>{{"Price" | translate}}: {{ product.price }}</span>
+            <div>
+                <div class="btn" (click)="deleteData(product.id)" *ngIf="loggedIn"><i class="fas fa-trash"></i></div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div *ngIf="!products || products.length === 0">
+    <p>{{"No Products Found" | translate}}</p>
+</div>
+<app-add-product-form *ngIf="popUpService.showPopUp$ | async"></app-add-product-form>
+

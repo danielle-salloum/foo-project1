@@ -1,0 +1,41 @@
+<div class="overlay" *ngIf="showPopUp"></div>
+<div class="add-product-container" *ngIf="showPopUp">
+<!-- <div class="add-product-container"> -->
+    <span class="close-button float-right" (click)="closePopUp()">X</span>
+    <h2>{{"Product Form" | translate}}</h2>
+    <form (ngSubmit)="onSubmit()" #productForm="ngForm">
+        <div class="alert alert-danger" [hidden]="!error">
+            {{ error | translate}}
+        </div>
+        <div>
+            <label for="title">{{"Title"|translate}}:</label>
+            <input type="text" id="title" name="title" [(ngModel)]="product.title" required>
+        </div>
+        <div>
+            <label for="quantity">{{"Quantity" | translate}}:</label>
+            <input type="text" id="quantity" name="quantity" [(ngModel)]="product.quantity" pattern="[0-9]+" required>
+        <div
+            *ngIf="productForm.controls['quantity']?.hasError('pattern') && (productForm.controls['quantity']?.dirty || productForm.controls['quantity']?.touched)">
+            <div class="error-msg">{{"Please enter a valid number" |translate}}.</div>
+        </div>
+        </div>
+        <div>
+            <label for="price">{{"Price" | translate}}:</label>
+            <input type="text" id="price" name="price" [(ngModel)]="product.price" pattern="[0-9]+" required>
+            <div
+            *ngIf="productForm.controls['price']?.hasError('pattern') && (productForm.controls['price']?.dirty || productForm.controls['price']?.touched)">
+            <div class="error-msg">{{"Please enter a valid number" |translate}}.</div>
+        </div>
+        
+        </div>
+        <div>
+            <label for="image">{{"Image" | translate}}:</label>
+            <input type="file" id="image" name="image" onchange="console.log(event.target.files)" accept="image/*" required>
+            <!-- <input type="file" id="image" name="image" (change)="onFileChange($event)" accept="image/*" required> -->
+            <img id="imagePreview" alt="Image Preview" style="margin: 5px 0px; " class="image-preview">
+        </div>
+        <div>
+            <button type="submit" [disabled]="productForm.invalid">{{"Submit" |translate}}</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,16 @@
+.main-carousel{
+   text-align: center;
+   margin-top: 128px;
+}
+.carousel-image{
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Media Query */
+@media (max-width: 256px) {
+    .carousel-indicators {
+        display: none !important;
+        width: 0px !important;
+    }
+}

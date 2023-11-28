@@ -1,0 +1,37 @@
+<!-- login.component.html -->
+<div>
+    <h2>Sign Up Form</h2>
+    <form #signupForm=ngForm 
+    (ngSubmit)="onSubmit()"
+    >    
+      <!-- Email input -->
+        <div class="form-outline mb-4">
+            <label class="form-label" for="form2Example1">Email address</label>
+            <input type="email" id="form2Example1" class="form-control" [(ngModel)]="form.email" name="email"
+                required />
+                <div class="alert alert-danger" [hidden] = "!error.email"> {{error.email}}</div>
+            </div>
+            <div class="form-outline mb-4">
+                <label class="form-label" for="form2Example4">Name</label>
+                <input type="text" id="form2Example4" class="form-control" [(ngModel)]="form.name" name="name"
+                required />
+                <div class="alert alert-danger" [hidden] = "!error.name"> {{error.name}}</div>
+            </div>
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+                <label class="form-label" for="form2Example2">Password</label>
+                <input type="password" id="form2Example2" class="form-control" [(ngModel)]="form.password" name="password"
+                required />
+        </div>
+        <div class="form-outline mb-4">
+            <label class="form-label" for="form2Example3">Confirm Password</label>
+            <input type="password" id="form2Example3" class="form-control" [(ngModel)]="form.password_confirmation" name="password_confirmation"
+            required />
+            <div class="alert alert-danger" [hidden] = "!error.password"> {{error.password}}</div>
+        </div>
+        <!-- Submit button -->
+        <div class="login-signin-btn">
+            <button type="submit" class="btn btn-primary btn-block mb-4" [disabled]="!signupForm.valid">Sign up</button>
+        </div>
+    </form>
+</div>

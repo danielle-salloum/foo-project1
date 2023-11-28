@@ -1,0 +1,54 @@
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+.footer-main-container{
+    text-align: center;
+    border-top: solid black 2px;
+}
+
+.footer-header{
+    font-size: 26px;
+    font-weight: 800;
+}
+.social-icons{
+    display: flex;
+    margin: 20px 0px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.fab{
+    color: black;
+    font-size:50px;
+}
+.footer-link{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    flex-direction: column;
+}
+.footer-link-text{
+    color: black;
+    text-decoration: none;
+}
+
+/*Media Query*/
+@media only screen and (max-width: 437px) {
+    .fab {
+        font-size: 30px;
+    }
+    .footer-header {
+        font-size: 18px;
+    }
+}
+@media only screen and (max-width: 330px) {
+    .fab {
+        font-size: 25px;
+    }
+    .footer-header {
+        font-size: 16px;
+        font-weight: 800;
+    }
+    .footer-link-text {
+        font-size: 10px;
+    }
+}
